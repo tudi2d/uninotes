@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-school-notes",
-  "description": "Gatsby schools notes starter",
+  "name": "uni-notes",
+  "description": "Gatsby uni notes",
   "version": "1.0.0",
-  "author": "Patrick Ferris",
+  "author": "Philipp Hugenroth",
   "dependencies": {
     "gatsby": "^2.0.53",
     "gatsby-image": "^2.0.20",
@@ -25,7 +25,9 @@
     "remark-math": "^1.0.5"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "latex",
+    "notes"
   ],
   "license": "MIT",
   "scripts": {
@@ -40,6 +42,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/tudi2d/uni-notes"
   }
 }
