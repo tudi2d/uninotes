@@ -1,0 +1,3 @@
+---
+title: "Datenstrukturen & Algorithmen"
+---

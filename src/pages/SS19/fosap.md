@@ -1,7 +1,7 @@
 ---
-title: 'Formale Systeme, Automaten & Prozesse'
+title: "Formale Systeme, Automaten & Prozesse"
 description: This post is related to the gatsbyjs
-date: '2018-09-26'
+date: "2018-09-26"
 ---
 
 Dies ist meine persönliche Zusammenfassung und Mitschrift der FoSAP Vorlesung des Sommersemesters 2019. Ich beziehe mich hierbei auf die Folien der Vorlesung und Übung und
@@ -20,3 +20,5 @@ Ein deterministische endliche Automat A ist ein 5 Tupel mit $$ A = (Q,\Sigma,\de
 ##NFA's
 
 ##Reguläre Sprachen
+
+##TEST
