@@ -443,8 +443,7 @@ pre tt:after {
 }
 
 .layout {
-  display: grid;
-  grid-template-columns: 300px auto;
+  display: flex;
 }
 
 .link {

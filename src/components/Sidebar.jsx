@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import Slugger from "github-slugger";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./sidebar.css";
 
@@ -52,9 +52,22 @@ const Sidebar = props => {
       slug.reset();
     };
   }, [props.location.href]);
+  const defaultSidebarShown = true;
+  const [shown, toggleSidebar] = useState(defaultSidebarShown);
 
   return (
-    <nav className="sidebar toc">
+    <nav className={shown ? "sidebar sidebar-open" : "sidebar sidebar-closed"}>
+      <div
+        className={shown ? "sidebar-icon-open" : "sidebar-icon-closed"}
+        onClick={() => toggleSidebar(isShown => !isShown)}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <g>
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" />
+          </g>
+        </svg>
+      </div>
       {articles.map(({ title, route, headings }) => (
         <ul className="sidebar-article" key={title + route}>
           <li className="sidebar-post-list">

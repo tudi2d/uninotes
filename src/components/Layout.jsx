@@ -25,7 +25,7 @@ const Layout = props => (
             { name: "keywords", content: "sample, something" },
           ]}
         >
-          <html lang="en" />
+          <html lang="de" />
         </Helmet>
         <Sidebar {...props} />
         {props.children}

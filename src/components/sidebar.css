@@ -1,14 +1,47 @@
 .sidebar {
   height: 100vh;
-  width: 300px;
   position: fixed;
+  background: white;
+  z-index: 5;
+  width: 300px;
   left: 0;
   display: block;
   grid-column-start: 1;
   grid-column-end: 2;
   padding: 20px 0;
   box-shadow: 2px 0px 56px -20px rgba(0, 0, 0, 0.75);
+  transition: 0.4s ease-in-out;
 }
+
+.sidebar-open {
+  transform: translateX(0);
+}
+
+.sidebar-closed {
+  transform: translateX(-250px);
+}
+
+.sidebar-icon-open {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 250px;
+
+  transform: rotateZ(180deg);
+  transition: 0.4s ease-in-out;
+}
+
+.sidebar-icon-closed {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 250px;
+
+  transition: 0.4s ease-in-out;
+}
+
 .sidebar-post-list {
   margin-left: 10px;
   color: black;
