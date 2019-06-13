@@ -31,7 +31,6 @@ const addSubjects = function(edges) {
         headings,
         route,
       };
-      console.log(page);
       let subjectExists = false;
       subjects.forEach(({ title, pages }) => {
         if (title === topics[0]) {
@@ -97,7 +96,9 @@ const Sidebar = props => {
       ))}
       {subjects.map(({ title, pages }, i) => (
         <ul className="sidebar-topic" key={title ? title : i}>
-          <li>{title ? title.toUpperCase() : ""}</li>
+          <li>
+            <h4>{title ? title.toUpperCase() : ""}</h4>
+          </li>
           {pages.map(({ title, route, headings }) => (
             <ul className="sidebar-topic-article" key={title + route}>
               <li className="sidebar-topic-post-list">

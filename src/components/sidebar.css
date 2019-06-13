@@ -8,7 +8,7 @@
   display: block;
   grid-column-start: 1;
   grid-column-end: 2;
-  padding: 20px 0;
+  padding: 20px 20px 0px 0px;
   box-shadow: 2px 0px 56px -20px rgba(0, 0, 0, 0.75);
   transition: 0.4s ease-in-out;
 }

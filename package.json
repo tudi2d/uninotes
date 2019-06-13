@@ -1,7 +1,7 @@
 {
   "name": "uni-notes",
-  "description": "Gatsby uni notes",
-  "version": "1.0.0",
+  "description": "Uni Notes made with GatsbyJS",
+  "version": "0.1.0",
   "author": "Philipp Hugenroth",
   "dependencies": {
     "@mdx-js/mdx": "^1.0.0-rc.4",
