@@ -3,7 +3,7 @@
   position: fixed;
   background: white;
   z-index: 5;
-  width: 300px;
+  width: 400px;
   left: 0;
   display: block;
   grid-column-start: 1;
@@ -18,13 +18,22 @@
 }
 
 .sidebar-closed {
-  transform: translateX(-275px);
+  transform: translateX(-375px);
+}
+
+.sidebar-header {
+  display: flex;
+  padding-left: 25px;
+}
+
+.sidebar-header > h1 {
+  flex-grow: 1;
 }
 
 .sidebar-icon-wrapper {
-  position: absolute;
+  position: relative;
+  left: 50px;
   cursor: pointer;
-  left: 275px;
   display: inline-block;
   border-radius: 25%;
   background-color: black;
@@ -46,6 +55,21 @@
   height: 50px;
 
   transition: 0.4s ease-in-out;
+}
+
+.sidebar > nav {
+  overflow-y: auto;
+  width: inherit;
+  height: calc(100% - 90px);
+  margin: 20px 0px 20px 0px;
+  padding-right: 16px;
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.sidebar-closed > nav {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
 }
 
 .sidebar-post-list {
