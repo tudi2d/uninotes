@@ -1,5 +1,10 @@
 ---
 title: "Web Mining"
+description: ""
+---
+
+This is my personal summary of the lecture "Web Mining" hold by the [CSSH at the RWTH Aachen](http://cssh.rwth-aachen.de/) in the summer term of 2019. The structure of this document is based on the structure of the lecture. My goal was not to copy the slides but provide an easy to read document which contains the key information of the lecture and helps prepairing for the exam.
+
 ---
 
 ## Introduction
@@ -73,7 +78,7 @@ robots.txt: Inform web crawlers which files/folders are allowed for crawling. Th
 Bot detection: CAPTCHA, honeypot
 Preferential crawlers: Give unvisited link a priority
 
-**Inverted Index:**
+#### Inverted Index
 
 _Document 1:_ Hans is a goat.  
 _Document 2:_ A goat is an animal ... goat.
@@ -86,3 +91,94 @@ Hans: $<id_1,1[1]>$, ... , goat: $<id_1,1,[4], <id_2,2,[2,x]$, is: $<id_1,1,[2]>
 The inverted Index can be stored in a large hashtable
 
 ## Web Content Mining
+
+### Information Retrieval
+
+Finding relevant documents (web pages) to a given user query, for example with web search. In difference to normal data retrieval we don't have a ordered/structured database and no query language like SQL to retriev data. The found documents are than going to be ranked according to their relevance for the user.
+
+![IR Architecture](https://image.slidesharecdn.com/tdminformationretrieval-150803041801-lva1-app6891/95/tdm-information-retrieval-13-638.jpg/cb%3D1438575616)
+
+Web search is different to traditional IR:
+
+- Efficiency is more important
+- Web pages differ from pure text
+- Spamming is a issue on the Web
+
+### Information retrieval models
+
+Describes how a document/query is represented and the relevance of a document for a given query
+
+#### Boolean Model
+
+- Simplest IR model based on boolean algebra (AND, OR, NOT)
+- The documents for which the query is locial true will be retrieved
+
+A = Brutus; B = Caesar; C = Calpurnia
+
+|     | Hamlet | Othello | Macbeth |
+| --- | ------ | ------- | ------- |
+| A   | 1      | 0       | 0       |
+| B   | 1      | 1       | 1       |
+| C   | 0      | 0       | 0       |
+
+Brutus AND Caesar AND NOT Calpurnia  
+100 AND 111 AND NOT 000 $\rightarrow$ 100
+
+#### Vector Space Model
+
+- Most widely used IR model
+
+**Term Frequency (TF):** $tf_{ij}= \frac{f_{ij}}{max\{f_{1j},...,f_{|V|j}\}}$  
+$f_{ij}$ is the number how often Term i appears in Document j  
+**Inverse document frequency (IDF):** $idf_i = \log \frac{N}{df_i}$  
+**TF-IDF:** $w_{ij} = tf_{ij} \times idf_i$  
+$N$: number of documenst; $df_i$: number of documents where $t_i$ appears  
+**Cosine similarity:** $\cos(d_j, q)= \frac{<d_j, q>}{||d_j|| \times ||q||}$
+
+`TODO: Add Example`
+
+Advantages:
+
+- Partial matching (even when no document contains every term)
+- Ranking similarity
+- Term weighting
+
+### Evaluation Measures
+
+Are retrieved documents relevant and are all relevant documents retrieved?
+
+Precision at position i: $p(i)=\frac{\text{Number of relevant documents until i}}{i}$  
+Recall: $\frac{\text{Number of relevant documents until i}}{\text{Number of all relevant documents}}$  
+Average Precision: $p_{avg}=\frac{\sum p(i)}{\text{Number of all relevant documents}}$
+
+### Text and web page preprocessing
+
+This includes stemming, stopword removal, HTML tag removal,... to make a documents shorter and queryable.
+
+### Indexing documents for retrieval
+
+#### Latent Semantic Indexing
+
+Goal: Identify association of terms
+
+Eigenvalue($\Lambda$) and Eigenvector($v$): $\text{S}v = \Lambda v$
+
+#### Singular Value Decomposition
+
+Factor a matrix A ($m \times n$) into 3: $A = U \Sigma V^T$ with
+
+Here is a [good example](https://web.mit.edu/be.400/www/SVD/Singular_Value_Decomposition.htm) on SVD.
+
+## Web Structure Mining
+
+## Association Rule Mining
+
+## Subgroup Discovery
+
+## Recommender Systems
+
+## Sequential Data
+
+## Misbehaviour on the Web
+
+## Representation learning

@@ -11,7 +11,7 @@ const notes = props => {
         style={{
           margin: "80px auto",
           maxWidth: 960,
-          padding: "0px 1.0875rem 1.45rem",
+          padding: "0px 30px 30px",
           paddingTop: 0,
           gridColumnStart: 2,
           gridColumnEnd: 3,

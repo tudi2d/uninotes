@@ -39,14 +39,14 @@ $A=(Q_1 \times Q_2, \Sigma, \delta, (q_{01},q_{02}),F)$.
 
 ### Abschlusseigenschaften
 
-- L DFA-erkennbar, dann ist auch \$\bar{L} DFA-erkennbar(Tausche End- und nicht Endzustände)
+- L DFA-erkennbar, dann ist auch $\bar{L}$ DFA-erkennbar(Tausche End- und nicht Endzustände)
 - $L_1 \cap L_2$, $L_1 \cup L_2$
 - $LK$ (Hintereinanderausführung)
 - $L^* = \underset{n \in N}\cup L^n$, $L^0 = \{\epsilon \}$, $\emptyset^* = \{ \epsilon \}$
 
 ## NFA's
 
-Ein nicht-deterministischer endlicher Automat NFA \$A =(Q,\Sigma, \Delta, q_0, F)\$. Der Unterschied zum DFA liegt in der:
+Ein nicht-deterministischer endlicher Automat NFA $A =(Q,\Sigma, \Delta, q_0, F)$. Der Unterschied zum DFA liegt in der:
 
 - Transitionsrelation $\Delta \subseteq Q \times \Sigma \times Q$
 
