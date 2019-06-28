@@ -128,20 +128,26 @@ Brutus AND Caesar AND NOT Calpurnia
 
 - Most widely used IR model
 
+**Document-Term Matrix:** $n \times m$ matrix with the frequency of the n Terms in each of the m documents
 **Term Frequency (TF):** $tf_{ij}= \frac{f_{ij}}{max\{f_{1j},...,f_{|V|j}\}}$  
 $f_{ij}$ is the number how often Term i appears in Document j  
 **Inverse document frequency (IDF):** $idf_i = \log \frac{N}{df_i}$  
-**TF-IDF:** $w_{ij} = tf_{ij} \times idf_i$  
-$N$: number of documenst; $df_i$: number of documents where $t_i$ appears  
+$N$: number of documents; $df_i$: number of documents where $t_i$ appears  
+**TF-IDF:** $w_{ij} = tf_{ij} * idf_i$  
+**Term weight:** $w_{iq} = (0.5 + \frac{0.5f_{iq}}{max\{f_{1q},...,f_{|V|q}\}})*idf_i$ of term $t_i$ in query q  
 **Cosine similarity:** $\cos(d_j, q)= \frac{<d_j, q>}{||d_j|| \times ||q||}$
-
-`TODO: Add Example`
 
 Advantages:
 
 - Partial matching (even when no document contains every term)
 - Ranking similarity
 - Term weighting
+
+#### Statistical Language Model
+
+Every term is considered individually (unigram). Documents are ranked by the likelihood of the query given the document.
+
+$Pr(q=q_1 q_2 ... q_m | d_j) = \overset{|V|}{\underset{i=1}{\prod}}Pr(t_i | d_j)^{f_{iq}} = \overset{|V|}{\underset{i=1}{\prod}} (\frac{f_{ij}}{|d_j|})^{f_{iq}}$
 
 ### Evaluation Measures
 
@@ -159,7 +165,7 @@ This includes stemming, stopword removal, HTML tag removal,... to make a documen
 
 #### Latent Semantic Indexing
 
-Goal: Identify association of terms
+Also called LSI has the goal to identify association of terms. This is achieved by reducing the dimensions of an n-dimensional term space. With this it is possible to see different meaning of terms in the context of other terms.
 
 Eigenvalue($\Lambda$) and Eigenvector($v$): $\text{S}v = \Lambda v$
 
@@ -169,7 +175,41 @@ Factor a matrix A ($m \times n$) into 3: $A = U \Sigma V^T$ with
 
 Here is a [good example](https://web.mit.edu/be.400/www/SVD/Singular_Value_Decomposition.htm) on SVD.
 
+This reduces the dimensionality of the rank and this is the mathematically optimal of reducing dimension.
+
+**k-concept space:** Consider the k largest singular values and set the remaining values to zero  
+$A_k = U_k \Sigma_k V_k^T = U \text{diag}(\sigma_1,...,\sigma_k,0,...,0) V^T$
+
+The k-concept space is an approximation with an error of $\sigma_{k+1}$ as this is the next value which is excluded from the k-concept space.
+
+All in all the LSI performs better than tradional keywords based methods and has proved to be a valuable tool for natural language processing as well as in information retrieval. The time complexity of SVD is high ($O(n^{2k^3})$). This can reduced by a k-concept space, but there is no fixed optimal k. It has to be found first (normally around 150-350 words). Also SVD assumes data to be normally distributed.
+
+#### Metasearch
+
+Combining search enginge to increase coverage while not having an own database.
+
+Combination using similarity score:
+
+- CombMIN($d_i$) = $min\{ c_1(d_1),...,c_n(d_1)\}$
+- CombMAX($d_i$) = $max\{ c_1(d_1),...,c_n(d_1)\}$
+- CombSUM($d_i$) = $c_1(d_1)+...+c_n(d_1)$
+- CombANZ($d_i$) = $\frac{c_1(d_1)+...+c_n(d_1)}{n}$
+
+**Combination using ranking positions:**
+
+- Borda ranking: For every search engine each of the n documents get a number starting with the highest rank getting the number n and the second highest getting n-1 and so on. When there are unranked pages for the search engine the remaining points are divided.
+- Condorcet ranking: ...
+- **Reciprocal ranking:** Same principal as Borad ranking but with fractions - The highest ranked document gets a $1$ and the second one gets a $\frac{1}{2}$ and so on.
+
+The ranking is written as a set in descending order.
+
 ## Web Structure Mining
+
+Strongly connected: For a graph there is a path between every pair vertices $\rightarrow$ strongly connected component is a subset, which is strongly connected
+
+### PageRank
+
+Simuate behaviour of a random surfer to rank every web page.
 
 ## Association Rule Mining
 
@@ -182,3 +222,7 @@ Here is a [good example](https://web.mit.edu/be.400/www/SVD/Singular_Value_Decom
 ## Misbehaviour on the Web
 
 ## Representation learning
+
+## Handling Large Datasets
+
+### Data streams

@@ -73,8 +73,6 @@ Da $Q' = Pot(Q)$ ist ein Zustand eine Menge und wird auch mit Mengenklammern ges
 
 ### epsilon-NFA zu NFA
 
-    Hier das Zeug aus der Vorlesung reinpacken
-
 L ist DFA-erkennbar $\Leftrightarrow$ L ist $\epsilon$-NFA-erkennbar $\Leftrightarrow$ L ist FA-erkennbar
 
 #### epsilon-NFA Komplement
