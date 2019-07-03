@@ -25,10 +25,15 @@
 .sidebar-header {
   display: flex;
   padding-left: 25px;
+  align-items: center;
 }
 
-.sidebar-header > h1 {
+.sidebar-header > .link {
   flex-grow: 1;
+}
+
+.sidebar-header > .link > h1 {
+  margin-bottom: 0;
 }
 
 .sidebar-icon-wrapper {
@@ -65,10 +70,9 @@
 }
 
 .sidebar > nav {
-  overflow-y: auto;
   width: inherit;
-  height: calc(100% - 90px);
-  margin: 20px 0px 20px 0px;
+  height: calc(100% - 135px);
+  margin: 30px 0px 20px 0px;
   padding-right: 16px;
   opacity: 1;
   transition: opacity 0.25s ease-in-out;
@@ -84,8 +88,30 @@
   color: black;
 }
 .sidebar-post-headings {
-  margin-left: 15px;
   color: grey;
+}
+
+.sidebar-topic-post-headings {
+  background-color: white;
+  overflow: hidden;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar-topic-post-headings.active {
+}
+
+.sidebar-topic-post-headings.depth-2 {
+}
+
+.sidebar-topic-post-headings.depth-3 {
+  margin-left: 20px;
+  color: #353535;
+}
+
+.sidebar-topic-post-headings.depth-4 {
+  margin-left: 40px;
+  color: #7a7a7a;
 }
 
 .sidebar-topic > li {
@@ -102,6 +128,13 @@
 
 .link:hover {
   text-decoration: underline;
+}
+
+.sidebar-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  font-size: 15px;
 }
 
 @media only screen and (max-width: 400px) {

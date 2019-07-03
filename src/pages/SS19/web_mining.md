@@ -44,7 +44,7 @@ A statistical model embodies assumption how the data is generated in a probabili
 
 ### Optimization
 
-Gradient descent (GD): Minimize a function: $f(x) = f(x) - f'(x)$. Start at a random x and step towards the x with $f'(x) = 0$.
+Gradient descent (GD): Minimize a function: $f(x) = f(x) - f'(x)$. Start at a random x and step towards the x with $f'(x) = 0$.  
 Convex-Function: For this speacial functions the gradient descent will find the global minimum  
 Stochastic gradient descent (SGD): Faster to compute then the complete gradient, but will not converge as for $f'(x)$ there will be a $a$ so that $y=y-a*f'(x)$. $a$ is called the learing rate a
 
@@ -84,9 +84,9 @@ _Document 1:_ Hans is a goat.
 _Document 2:_ A goat is an animal ... goat.
 
 _Simple inverted index:_
-Hans: $id_1$, ... , goat: $id_1, id_2$, is: $id_1, id_2$, anmial: $id_2$, ...  
+Hans: $id_1$; ... ; goat: $id_1, id_2$; is: $id_1, id_2$; anmial: $id_2$; ...  
 _More complex inverted index:_
-Hans: $<id_1,1[1]>$, ... , goat: $<id_1,1,[4], <id_2,2,[2,x]$, is: $<id_1,1,[2]>, <id_2,1,[3]>$, ...
+Hans: $<id_1,1,[1]>$; ... ; goat: $<id_1,1,[4]>, <id_2,2,[2,x]>$; is: $<id_1,1,[2]>, <id_2,1,[3]>$; ...
 
 The inverted Index can be stored in a large hashtable
 
@@ -209,7 +209,48 @@ Strongly connected: For a graph there is a path between every pair vertices $\ri
 
 ### PageRank
 
-Simuate behaviour of a random surfer to rank every web page.
+Simulate behaviour of a random surfer to rank every web page by likelood that it will be visited.
+
+Transition matrix: stochastic matrix M  
+Calculating a step: One step: $M * v_0$; k-steps: $M^k*v_0$  
+The goal is to have an equation $v=Mv$. The eigen vector $v$ tells us on which page the surfer most likely ends up.
+
+**Bow tie structure of the Web**  
+![Bow tie structure of the Web](https://www.researchgate.net/profile/Debora_Donato/publication/200111010/figure/fig1/AS:285227383177216@1445014915124/The-bow-tie-structure-of-the-Web-graph.png)  
+PageRank would have worked if the web was strongly connected.
+
+Dead ends: A page which does not link to another page. If you would use the transition matrix it would not be stochastic any longer. You could delete all dead ends and incoming arcs.  
+Spider traps and taxation: A set of node with no arc outside and no dead end. Solution: Allow to let a surfer teleport to a random page/ start a random sufer from a new page with a small pobability: $v' = \beta M v + (1- \beta) \frac{e}{n}$
+
+Topic sensitive PageRank creates a vector of the topics biasing the PageRank into selecting pages from specific topics. This can be usefull when you know the topics the user is interessted in.
+
+Biased Random Walk: The topic is identified by the topic sensitive PageRank thats why now we can redirect a random surfer to a document of the topic T. $v' = \beta M v + (1- \beta) \frac{e_S}{|S|}$ with S as a set of documents identified to be related to to topic T and $e_S$ a vector, which is 1 for the components in S and otherwise 0.  
+Jaccard similarity: $J(A,B)= \frac{|A \cap B|}{|A \cup B|}$
+
+#### Link spam
+
+Spam farm: A collection of pages, which want to increase the PageRank of a single target page.
+
+![Spam farm](https://slideplayer.com/slide/14409387/90/images/11/Spam+Farms+%E2%80%93+%283%29+Goal%3A+boost+PageRank+of+page+t..jpg)
+
+Search engines need to detect link spam. This is possible by looking for structures like spam farms and then eliminate the target and releated pages. This is not enough as sapmmers come up with different structures. Another solution are modifications of the PageRank.
+
+- TrustRank: Topic sensitive PageRank with a set of trustworthy pages for those topics. Those won't link to spam pages. Humans can select trustworthy pages or pages with controlles top-level domains (.edu, .gov ...) might be a good choice as well.
+- Spam Mass: $\frac{\text{PageRank} - \text{TrustRank}}{\text{PageRank}}$ ($\leq 0$ values are unlikely to be spam)
+
+### HITS
+
+**H**yperlink-**I**nduced **T**opic **S**earch
+
+Hubs: Links to pages where you can find information about a topic
+
+- Hubbiness: $h = \lambda L a = \lambda \mu L L^T h$ - How good are the linke authority pages?
+
+Authorities: Pages, which provide information about a topic
+
+- Authority: $a=\mu L^T h = \lambda \mu L^T L a$ - How good are the hubs that pointed at this authority?
+
+HITS can be used for identifying communities. This can provide information about the users interest to better target ads as well as giving insights about the evolution of the web.
 
 ## Association Rule Mining
 

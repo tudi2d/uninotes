@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React, { useState } from "react";
 import "./sidebar.css";
+import { Scrollbars } from "react-custom-scrollbars";
 
 let articles = [];
 let subjects = [];
@@ -23,7 +24,7 @@ const addSubjects = function(edges) {
           .join("")}`,
       };
     });
-    if (route !== "/404/") {
+    if (route !== "/404/" && route !== "/") {
       const page = {
         title: frontmatter.title
           ? frontmatter.title
@@ -59,7 +60,9 @@ const Sidebar = props => {
   return (
     <div className={shown ? "sidebar sidebar-open" : "sidebar sidebar-closed"}>
       <div className="sidebar-header">
-        <h1>uninotes.</h1>
+        <Link to="/" className="link">
+          <h1>uninotes.</h1>
+        </Link>
         <div
           className="sidebar-icon-wrapper"
           onClick={() => toggleSidebar(isShown => !isShown)}
@@ -80,53 +83,60 @@ const Sidebar = props => {
         </div>
       </div>
       <nav>
-        {articles.map(({ title, route, headings }) => (
-          <ul className="sidebar-article" key={title + route}>
-            <li className="sidebar-post-list">
-              <Link to={route} className="link">
-                {title}
-              </Link>
-            </li>
-            <ul className="sidebar-anker">
-              {headings.map(({ value, depth, route }) => (
-                <Link to={route} className="link" key={route}>
-                  <li className="sidebar-post-headings" key={title + value}>
-                    {value}
-                  </li>
+        <Scrollbars autoHide>
+          {articles.map(({ title, route, headings }) => (
+            <ul className="sidebar-article" key={title + route}>
+              <li className="sidebar-post-list">
+                <Link to={route} className="link">
+                  {title}
                 </Link>
+              </li>
+              <ul className="sidebar-anker">
+                {headings.map(({ value, depth, route }) => (
+                  <Link to={route} className="link" key={route}>
+                    <li className="sidebar-post-headings" key={title + value}>
+                      {value}
+                    </li>
+                  </Link>
+                ))}
+              </ul>
+            </ul>
+          ))}
+          {subjects.map(({ title, pages }, i) => (
+            <ul className="sidebar-topic" key={title ? title : i}>
+              <li>
+                <h4>{title ? title.toUpperCase() : ""}</h4>
+              </li>
+              {pages.map(({ title, route, headings }) => (
+                <ul className="sidebar-topic-article" key={title + route}>
+                  <li className="sidebar-topic-post-list">
+                    <Link to={route} className="link">
+                      {title}
+                    </Link>
+                  </li>
+                  <ul className="sidebar-anker">
+                    {headings.map(({ value, depth, route }) => (
+                      <Link to={route} className="link" key={route}>
+                        <li
+                          className={`sidebar-topic-post-headings depth-${depth}`}
+                          key={title + value}
+                        >
+                          {value}
+                        </li>
+                      </Link>
+                    ))}
+                  </ul>
+                </ul>
               ))}
             </ul>
-          </ul>
-        ))}
-        {subjects.map(({ title, pages }, i) => (
-          <ul className="sidebar-topic" key={title ? title : i}>
-            <li>
-              <h4>{title ? title.toUpperCase() : ""}</h4>
-            </li>
-            {pages.map(({ title, route, headings }) => (
-              <ul className="sidebar-topic-article" key={title + route}>
-                <li className="sidebar-topic-post-list">
-                  <Link to={route} className="link">
-                    {title}
-                  </Link>
-                </li>
-                <ul className="sidebar-anker">
-                  {headings.map(({ value, depth, route }) => (
-                    <Link to={route} className="link" key={route}>
-                      <li
-                        className="sidebar-topic-post-headings"
-                        key={title + value}
-                      >
-                        {value}
-                      </li>
-                    </Link>
-                  ))}
-                </ul>
-              </ul>
-            ))}
-          </ul>
-        ))}
+          ))}
+        </Scrollbars>
       </nav>
+      <div className="sidebar-footer">
+        <a href="https://www.github.com/tudi2d/uni-notes" className="github">
+          contribute.
+        </a>
+      </div>
     </div>
   );
 };
