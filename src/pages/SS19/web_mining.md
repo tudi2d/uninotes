@@ -225,7 +225,7 @@ Spider traps and taxation: A set of node with no arc outside and no dead end. So
 Topic sensitive PageRank creates a vector of the topics biasing the PageRank into selecting pages from specific topics. This can be usefull when you know the topics the user is interessted in.
 
 Biased Random Walk: The topic is identified by the topic sensitive PageRank thats why now we can redirect a random surfer to a document of the topic T. $v' = \beta M v + (1- \beta) \frac{e_S}{|S|}$ with S as a set of documents identified to be related to to topic T and $e_S$ a vector, which is 1 for the components in S and otherwise 0.  
-Jaccard similarity: $J(A,B)= \frac{|A \cap B|}{|A \cup B|}$
+**Jaccard similarity:** $J(A,B)= \frac{|A \cap B|}{|A \cup B|}$
 
 #### Link spam
 
@@ -252,9 +252,84 @@ Authorities: Pages, which provide information about a topic
 
 HITS can be used for identifying communities. This can provide information about the users interest to better target ads as well as giving insights about the evolution of the web.
 
+#### Strongly connected bipartite subgraphs
+
+Websites which are releated don't link at each other (e.g. Apple to Microsoft), but Websites who link to a page might link to several pages of this topic.
+
+![Bipartite Graph](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Simple-bipartite-graph.svg/220px-Simple-bipartite-graph.svg.png)
+
+Bipartite core: Every page from a subset in U links to every page in a subset in V.
+
+For web communities we are mostly interessted in finding the core. These can be done by pruning unqualified pages with a high in-degree of links (e.g. Google, Yahoo) or a low out-degree below a set value. For generating the core we use the [apriori algorithm](/web-mining#apriori).
+
+#### Maximum flow communities
+
+Find the maximum flow between source s and sink t. The maximum flow can be find using the Ford-Fulkerson algorithm. Within the detected communities those with the most links to pages in the community are ranked highest. Those are then added to the source set. Repeat the algorithm to get larger communities.
+Maximum flow = minimum cut
+
+![Flow](https://image.slidesharecdn.com/maxflowmincut-140407042135-phpapp01/95/max-flow-min-cut-15-638.jpg?cb=1420522395)
+
+When considering the web cutting the edges would lead to two seperated web communities.
+
 ## Association Rule Mining
 
+Find associations and correlations of items and discover non-trivial and interesting associations in a data set. The most important association rules are knonw, but the detecting the unknown rules can be interessting.
+
+### Association Rules - AR
+
+| TID | Items                       |
+| --- | --------------------------- |
+| T1  | bread, jelly, peanut-butter |
+| T2  | bread, peanut-butter        |
+| T3  | beer, bread                 |
+
+For itemsets:  
+**Support Count:** $\sigma(\{ \text{bread}, \text{peanut-butter} \}) = 2$  
+**Support:** $s(\{ \text{bread}, \text{peanut-butter} \}) = \frac{2}{3}$  
+**Frequent Itemset:** Itemset with higher Support than a minimum support
+
+For rules:
+Rule: $X \Rightarrow Y$  
+**Support:** $s=\frac{\sigma(X \cap Y)}{\text{number of transaction}}$ - frequency of the rule  
+**Confidence:** $c= \frac{\sigma(X \cap Y)}{\sigma(X)}$ - Support count of both itemsets together compared to support of X
+
+### Apriori
+
+Most influential association rules miner. It will find the frequent itemsets (1) and from this generate rules (2).
+
+Aprori principle: If an itemset is frequent $\rightarrow$ subset of the itemset is frequent.  
+$(X \subseteq Y) \Rightarrow s(X) \geq s(Y)$
+
+With the aprori principle we can discard itemsets as soon as a subset is below the threshhold of the minimum support.
+
+![Subset tree](https://www.codeproject.com/KB/recipes/AprioriAlgorithm/7-Lattice.JPG)
+
+(1) From this we can simulate a aprori run and find the most frequent itemsets with $\text{minsup}= 2$:
+
+![Aprori run](http://image2.slideserve.com/4008515/the-apriori-algorithm-an-example-n.jpg)
+
+(2) The frequent itemsets help to generate association rules. For an frequent itemset L and a subset $F \subset L$ all rules \$F \Rightarrow \{ L-F \} which fullfill the minimum confidence are possible rules.
+
+The algorithm will then output a list of association rules.
+
+Apriori algorithm produces a lot of rules from which many are redundant/uninteresting/uninterpretable and strong rules are not equivalent to relevant rules.
+
+A rule $A \Rightarrow B$ is interessting if $s(A,B)- (s(A) * s(B)) > k$
+
 ## Subgroup Discovery
+
+Identify descriptions for subsets in a dataset, which have a interesting deviation from the pre-defined concept of interest.  
+In difference to association rule mining subgroup discovery measures the interestingness and does not focus on confidence and support.
+
+**Subgroup discovery task:** $S=(D,\Sigma,T,I,k)$  
+D: Dataset; $\Sigma$: Search space; T: Target concept; Q: Selection criteria; k: result set size
+
+**Interestingness measures:** $q(P) = i_P^a *(\tau_P - \tau_0)$  
+i: Number of Instances; $\tau_P$: Target share in subgroup; $\tau_0$: Target share in entire dataset
+
+For numerical target value $\tau$ can be replaced with $\mu$ which are the targe value of the subgroup and the entire dataset.
+
+### Efficient Subgroup Discovery
 
 ## Recommender Systems
 
@@ -267,3 +342,22 @@ HITS can be used for identifying communities. This can provide information about
 ## Handling Large Datasets
 
 ### Data streams
+
+## Ads, Monetization on Web
+
+### A/B Test
+
+Test Calls to action (CTA, 'buy now' vs. 'add to card') and Content (like Image vs. no Image)
+
+Measure test: Use a statistical hypothesis test and decide on the result depending on the p-value. From the p-value you can decide weather to discard the null-hypothesis or not.
+
+t-test: `Formular here`  
+Kolgomorov-smirnov test: `Formular here`
+
+Only usefull for large data sets.
+
+#### Explore vs. exploit
+
+Greedy algorithm  
+$\epsilon$-Greedy algorithm: is sensitive to bad tuning. Performs as good as the UCB algorithm  
+UCB algorithm
