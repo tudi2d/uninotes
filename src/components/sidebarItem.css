@@ -1,0 +1,31 @@
+.sidebar-item {
+  overflow: hidden;
+}
+
+.sidebar-item-list {
+  margin-bottom: 0;
+  transition: margin 0.25s ease-in-out;
+}
+
+.sidebar-item-list-headings {
+  background-color: white;
+  overflow: hidden;
+  margin: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+.sidebar-item-list-headings.active {
+}
+
+.sidebar-item-list-headings.depth-2 {
+}
+
+.sidebar-item-list-headings.depth-3 {
+  margin-left: 20px;
+  color: #353535;
+}
+
+.sidebar-item-list-headings.depth-4 {
+  margin-left: 40px;
+  color: #7a7a7a;
+}

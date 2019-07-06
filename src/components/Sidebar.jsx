@@ -2,6 +2,7 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import "./sidebar.css";
 import { Scrollbars } from "react-custom-scrollbars";
+import SidebarItem from "./SidebarItem";
 
 let articles = [];
 let subjects = [];
@@ -56,6 +57,7 @@ const Sidebar = props => {
 
   const defaultSidebarShown = true;
   const [shown, toggleSidebar] = useState(defaultSidebarShown);
+  const [isOpen, toggleAccordion] = useState(true);
 
   return (
     <div className={shown ? "sidebar sidebar-open" : "sidebar sidebar-closed"}>
@@ -109,23 +111,36 @@ const Sidebar = props => {
               </li>
               {pages.map(({ title, route, headings }) => (
                 <ul className="sidebar-topic-article" key={title + route}>
-                  <li className="sidebar-topic-post-list">
+                  <svg
+                    className={`sidebar-topic-post-icon ${
+                      route === props.location.pathname && isOpen
+                        ? "active"
+                        : ""
+                    }`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <g>
+                      <path fill="none" d="M0 0h24v24H0z" />
+                      <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" />
+                    </g>
+                  </svg>
+                  <li
+                    className="sidebar-topic-post-list"
+                    onClick={() =>
+                      toggleAccordion(
+                        route !== props.location.pathname || !isOpen
+                      )
+                    }
+                  >
                     <Link to={route} className="link">
                       {title}
                     </Link>
                   </li>
-                  <ul className="sidebar-anker">
-                    {headings.map(({ value, depth, route }) => (
-                      <Link to={route} className="link" key={route}>
-                        <li
-                          className={`sidebar-topic-post-headings depth-${depth}`}
-                          key={title + value}
-                        >
-                          {value}
-                        </li>
-                      </Link>
-                    ))}
-                  </ul>
+                  <SidebarItem
+                    headings={headings}
+                    isShown={route === props.location.pathname && isOpen}
+                  />
                 </ul>
               ))}
             </ul>

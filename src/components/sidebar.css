@@ -50,7 +50,7 @@
 }
 
 .sidebar-closed .sidebar-icon-wrapper {
-  left: 75px;
+  left: 74px;
   transition: 0.4s ease-in-out;
 }
 
@@ -87,31 +87,23 @@
   margin-left: 0px;
   color: black;
 }
+
+.sidebar-topic-post-icon {
+  position: absolute;
+  left: 27px;
+  margin-top: 3px;
+  width: 1em;
+  transform: rotate(0deg);
+  transition: transform 0.25s ease-in-out;
+}
+
+.sidebar-topic-post-icon.active {
+  transform: rotate(90deg);
+  transition: transform 0.25s ease-in-out;
+}
+
 .sidebar-post-headings {
   color: grey;
-}
-
-.sidebar-topic-post-headings {
-  background-color: white;
-  overflow: hidden;
-  margin: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-.sidebar-topic-post-headings.active {
-}
-
-.sidebar-topic-post-headings.depth-2 {
-}
-
-.sidebar-topic-post-headings.depth-3 {
-  margin-left: 20px;
-  color: #353535;
-}
-
-.sidebar-topic-post-headings.depth-4 {
-  margin-left: 40px;
-  color: #7a7a7a;
 }
 
 .sidebar-topic > li {
