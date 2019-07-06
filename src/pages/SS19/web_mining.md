@@ -1,6 +1,5 @@
 ---
 title: "Web Mining"
-description: ""
 ---
 
 This is my personal summary of the lecture "Web Mining" hold by the [CSSH at the RWTH Aachen](http://cssh.rwth-aachen.de/) in the summer term of 2019. The structure of this document is based on the structure of the lecture. My goal was not to copy the slides but provide an easy to read document which contains the key information of the lecture and helps prepairing for the exam.
@@ -134,8 +133,7 @@ $f_{ij}$ is the number how often Term i appears in Document j
 **Inverse document frequency (IDF):** $idf_i = \log \frac{N}{df_i}$  
 $N$: number of documents; $df_i$: number of documents where $t_i$ appears  
 **TF-IDF:** $w_{ij} = tf_{ij} * idf_i$  
-**Term weight:** $w_{iq} = (0.5 + \frac{0.5f_{iq}}{max\{f_{1q},...,f_{|V|q}\}})*idf_i$ of term $t_i$ in query q  
-**Cosine similarity:** $\cos(d_j, q)= \frac{<d_j, q>}{||d_j|| \times ||q||}$
+**Term weight:** $w_{iq} = (0.5 + \frac{0.5f_{iq}}{max\{f_{1q},...,f_{|V|q}\}})*idf_i$ of term $t_i$ in query q
 
 Advantages:
 
@@ -224,8 +222,7 @@ Spider traps and taxation: A set of node with no arc outside and no dead end. So
 
 Topic sensitive PageRank creates a vector of the topics biasing the PageRank into selecting pages from specific topics. This can be usefull when you know the topics the user is interessted in.
 
-Biased Random Walk: The topic is identified by the topic sensitive PageRank thats why now we can redirect a random surfer to a document of the topic T. $v' = \beta M v + (1- \beta) \frac{e_S}{|S|}$ with S as a set of documents identified to be related to to topic T and $e_S$ a vector, which is 1 for the components in S and otherwise 0.  
-**Jaccard similarity:** $J(A,B)= \frac{|A \cap B|}{|A \cup B|}$
+Biased Random Walk: The topic is identified by the topic sensitive PageRank thats why now we can redirect a random surfer to a document of the topic T. $v' = \beta M v + (1- \beta) \frac{e_S}{|S|}$ with S as a set of documents identified to be related to to topic T and $e_S$ a vector, which is 1 for the components in S and otherwise 0.
 
 #### Link spam
 
@@ -331,7 +328,55 @@ For numerical target value $\tau$ can be replaced with $\mu$ which are the targe
 
 ### Efficient Subgroup Discovery
 
+Pruning: If specializations of a subgroup will not achieve a high enough score to be included, they don't have to be explored
+
+Optimistic Estimates: $oe(P) = i_P * (1-\tau_0)$ with $tau_P = 1$  
+Evaluate each subgroup. The best are added to a set M. If $oe < min. quality in M$ all specializations can be skipped.
+
 ## Recommender Systems
+
+Broadly used for news, videos, online-shopping, etc. The benefits for the customer are a pre-selection of things they might like as well as discovering new things. The platform can increase the customer loyalty and sales. The recommender system can be understood like a function which gives you for a user, an item and background knowledge the relevance score of this item.
+
+Evaluation:  
+The recommender system does a good job, if it recommends widely unknown items that the user might like.  
+$\text{Precision} = \frac{ | \text{good movies recommended} | }{ | \text{all recommendations} | }$  
+$\text{Recall} = \frac{ | \text{good movies recommended} | }{ | \text{all good movies} | }$
+
+### Recommenders
+
+- Basic Recommendations: Hand curated - Simple (Most views/purchases) - Not tailored to individual users
+- Content-based recommonder: Recommend user x similar items to those they liked
+  - Item profile: Each item has a profile with important information
+  - User profile: Weighted average of rate items  
+    $\rightarrow$ Prediction: $u(c,i)=cos(c,i)=\frac{c*i}{ || c || * || i || }$ for user c and item i
+  - Estimate Ratings based on the behaviour/rating of similar users/ average of users
+
+### Similarity
+
+**Jaccard Similarity:** $J(A,B)= \frac{|A \cap B|}{|A \cup B|}$ (No rating)  
+**Cosine similarity:** $\cos(d_j, q)= \frac{<d_j, q>}{||d_j|| \times ||q||} = \frac{ \underset{ n \in N }{ \sum } d_{ji} * q_i }{ \sqrt{ \underset{ n \in N }{ \sum } d_{ji}^2 } \sqrt{ \underset{ n \in N }{ \sum } q_i^2 } }$ (missing ratings are negative)  
+**Pearson correlation coefficient:**  
+$sim(x,y) = \frac{ \underset{ s \in S_{ xy } }{ \sum } (r_{ xs } - \bar{ r_x } )( r_{ ys } - \bar{ r_y } ) }{ \sqrt{ \underset{ s\in S_{ xy } }{ \sum } ( r_{ xs } - \bar{ r_x } )^2 } \sqrt{ \underset{ s \in S_{ xy } }{ \sum }( r_{ ys } - \bar{ r_y })^2 } } = cos( (r_{xs}-\bar{r_x}), (r_{ys}-\bar{r_y}))$  
+(Consider only ratings if user x and y rated the item)
+
+### Collaborative Filtering
+
+User-based:
+
+**Prediction** based on pearson correlation and the average ratings of each user:  
+$pred(x,i) = avg(r_x) + \frac{ \underset{n \in N}{\sum} sim(x,n) *(rn_i - avg(r_n))}{\underset{n \in N}{\sum} sim(x,n)}$
+
+The prediction can be used to rank the items for the user (might lead to too many niche items, which can be prevented by considering the popularity)
+
+Items-based:
+
+Rate the similarity between items. This can be done with cosine similarity. This often works better, as items are simpler than user. On the other hand there is the problem of what to recommend to a new user as they did not ranked anything or just a few items and what is about new, not yet rated items?
+
+Latent Factor model:
+
+Matrix of hidden factors for each item Q and matrix of how important each factor is for each user $P^T$ leads to the complete rating matrix R: $R= Q*P^T$
+
+Rating of a item i of user x: $r_{xi} = q_i * p_x$ ($q_i$: row i in Q; $p_x$: column x of $P^T$)
 
 ## Sequential Data
 
@@ -343,7 +388,7 @@ For numerical target value $\tau$ can be replaced with $\mu$ which are the targe
 
 ### Data streams
 
-## Ads, Monetization on Web
+## Ads
 
 ### A/B Test
 
@@ -356,7 +401,7 @@ Kolgomorov-smirnov test: `Formular here`
 
 Only usefull for large data sets.
 
-#### Explore vs. exploit
+#### Explore vs exploit
 
 Greedy algorithm  
 $\epsilon$-Greedy algorithm: is sensitive to bad tuning. Performs as good as the UCB algorithm  

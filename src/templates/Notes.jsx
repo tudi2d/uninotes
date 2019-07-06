@@ -1,27 +1,23 @@
 import { graphql } from "gatsby";
 import React from "react";
-import Layout from "../components/Layout";
 
 const notes = props => {
   const notesMarkdown = props.data.markdownRemark;
-  const { title, description } = notesMarkdown.frontmatter;
+  const { title } = notesMarkdown.frontmatter;
   return (
-    <Layout {...props}>
-      <div
-        style={{
-          margin: "80px auto",
-          maxWidth: 960,
-          padding: "0px 30px 30px",
-          paddingTop: 0,
-          gridColumnStart: 2,
-          gridColumnEnd: 3,
-        }}
-      >
-        <h1>{title}</h1>
-        <h3>{description}</h3>
-        <div dangerouslySetInnerHTML={{ __html: notesMarkdown.html }} />
-      </div>
-    </Layout>
+    <div
+      style={{
+        margin: "80px auto",
+        maxWidth: 960,
+        padding: "0px 30px 30px",
+        paddingTop: 0,
+        gridColumnStart: 2,
+        gridColumnEnd: 3,
+      }}
+    >
+      {title ? <h1>{title}</h1> : null}
+      <div dangerouslySetInnerHTML={{ __html: notesMarkdown.html }} />
+    </div>
   );
 };
 
@@ -33,10 +29,9 @@ export const query = graphql`
       html
       frontmatter {
         title
-        description
       }
     }
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___title] }) {
       edges {
         node {
           fields {

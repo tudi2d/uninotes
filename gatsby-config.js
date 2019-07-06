@@ -7,6 +7,13 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     {
+      resolve: "gatsby-plugin-layout",
+      options: {
+        component:
+          "/run/media/philipp/Data/Dev/Git/uni-notes/src/components/Layout",
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "gatsby-starter-default",
