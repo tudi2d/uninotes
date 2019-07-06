@@ -6,13 +6,7 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-    {
-      resolve: "gatsby-plugin-layout",
-      options: {
-        component:
-          "/run/media/philipp/Data/Dev/Git/uni-notes/src/components/Layout",
-      },
-    },
+    "gatsby-plugin-layout",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
