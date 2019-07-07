@@ -8,6 +8,9 @@ const SidebarItem = ({ headings, isShown }) => {
     itemList.current.style.marginTop = isShown
       ? "0"
       : `-${itemList.current.clientHeight}px`;
+    return () => {
+      itemList.current.style.transition = "margin 0.25s ease-in-out";
+    };
   });
 
   return (

@@ -85,7 +85,7 @@ const Sidebar = props => {
         </div>
       </div>
       <nav>
-        <Scrollbars autoHide>
+        <Scrollbars autoHide universal>
           {articles.map(({ title, route, headings }) => (
             <ul className="sidebar-article" key={title + route}>
               <li className="sidebar-post-list">
