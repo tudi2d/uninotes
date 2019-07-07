@@ -13,6 +13,7 @@ const SidebarItem = ({ headings, isShown }) => {
     };
   });
 
+  // TODO: Close sidebar on click on mobile devices
   return (
     <div className="sidebar-item">
       <ul ref={itemList} className="sidebar-item-list">

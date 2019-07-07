@@ -44,10 +44,12 @@ A statistical model embodies assumption how the data is generated in a probabili
 ### Optimization
 
 Gradient descent (GD): Minimize a function: $f(x) = f(x) - f'(x)$. Start at a random x and step towards the x with $f'(x) = 0$.  
-Convex-Function: For this speacial functions the gradient descent will find the global minimum  
+Convex-Function: For this speacial functions the gradient descent will find the global minimum scrapper
 Stochastic gradient descent (SGD): Faster to compute then the complete gradient, but will not converge as for $f'(x)$ there will be a $a$ so that $y=y-a*f'(x)$. $a$ is called the learing rate a
 
 ### How does the internet work
+
+Internet vs WWW: Internet $\neq$ WWW. The internet describes a network of many computer networks, which exchange data. The WWW, in the meaning of websites/documents with URLs and hyperlinks, is one possible use case for this. Others are for example streaming and emails.
 
 OSI model: Open Systems Interconnection Model - Organizes services between clients in a network
 
@@ -197,7 +199,7 @@ Combination using similarity score:
 
 - Borda ranking: For every search engine each of the n documents get a number starting with the highest rank getting the number n and the second highest getting n-1 and so on. When there are unranked pages for the search engine the remaining points are divided.
 - Condorcet ranking: ...
-- **Reciprocal ranking:** Same principal as Borad ranking but with fractions - The highest ranked document gets a $1$ and the second one gets a $\frac{1}{2}$ and so on.
+- **Reciprocal ranking:** Same principal as Borad ranking but with fractions - The highest ranked document gets a $1$ and the second one gets a $\frac{1}{2}$ and so on. Calculate the sum of the reciprocal rankings for each item and compare them: $Score(a)=1+...+\frac{1}{2}=2,3$
 
 The ranking is written as a set in descending order.
 
@@ -220,7 +222,7 @@ PageRank would have worked if the web was strongly connected.
 Dead ends: A page which does not link to another page. If you would use the transition matrix it would not be stochastic any longer. You could delete all dead ends and incoming arcs.  
 Spider traps and taxation: A set of node with no arc outside and no dead end. Solution: Allow to let a surfer teleport to a random page/ start a random sufer from a new page with a small pobability: $v' = \beta M v + (1- \beta) \frac{e}{n}$
 
-Topic sensitive PageRank creates a vector of the topics biasing the PageRank into selecting pages from specific topics. This can be usefull when you know the topics the user is interessted in.
+**Topic sensitive PageRank** creates a vector of the topics biasing the PageRank into selecting pages from specific topics. This can be usefull when you know the topics the user is interessted in.
 
 Biased Random Walk: The topic is identified by the topic sensitive PageRank thats why now we can redirect a random surfer to a document of the topic T. $v' = \beta M v + (1- \beta) \frac{e_S}{|S|}$ with S as a set of documents identified to be related to to topic T and $e_S$ a vector, which is 1 for the components in S and otherwise 0.
 
@@ -238,6 +240,8 @@ Search engines need to detect link spam. This is possible by looking for structu
 ### HITS
 
 **H**yperlink-**I**nduced **T**opic **S**earch
+
+Link matrix: $L = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$ if there is only a link from e.g. page a to b. $L^T$ is in the same order as the PageRank Matrix M.
 
 Hubs: Links to pages where you can find information about a topic
 
@@ -309,9 +313,9 @@ With the aprori principle we can discard itemsets as soon as a subset is below t
 
 The algorithm will then output a list of association rules.
 
-Apriori algorithm produces a lot of rules from which many are redundant/uninteresting/uninterpretable and strong rules are not equivalent to relevant rules.
-
-A rule $A \Rightarrow B$ is interessting if $s(A,B)- (s(A) * s(B)) > k$
+A **strong association rule** is a rule, which has a higher support and confidence than a given minimum threshold. Apriori algorithm produces a lot of rules from which many are redundant/uninteresting/uninterpretable. Strong rules are not equivalent to interessting rules.
+A **strong association rule** is a rule, which has a higher support and confidence than a given minimum threshold. Apriori algorithm produces a lot of rules from which many are redundant/uninteresting/uninterpretable. strong rules are not equivalent to interessting rules.
+A rule $A \Rightarrow B$ is interessting if $s(A,B)- (s(A) * s(B)) > 0$.
 
 ## Subgroup Discovery
 
@@ -325,6 +329,8 @@ D: Dataset; $\Sigma$: Search space; T: Target concept; Q: Selection criteria; k:
 i: Number of Instances; $\tau_P$: Target share in subgroup; $\tau_0$: Target share in entire dataset
 
 For numerical target value $\tau$ can be replaced with $\mu$ which are the targe value of the subgroup and the entire dataset.
+
+A **strong association rule** is a rule, which has a higher support and confidence than a given minimum threshold. Apriori algorithm produces a lot of rules from which many are redundant/uninteresting/uninterpretable. strong rules are not equivalent to interessting rules.
 
 ### Efficient Subgroup Discovery
 
@@ -349,15 +355,16 @@ $\text{Recall} = \frac{ | \text{good movies recommended} | }{ | \text{all good m
   - Item profile: Each item has a profile with important information
   - User profile: Weighted average of rate items  
     $\rightarrow$ Prediction: $u(c,i)=cos(c,i)=\frac{c*i}{ || c || * || i || }$ for user c and item i
-  - Estimate Ratings based on the behaviour/rating of similar users/ average of users
+  - Advantages: Can recommende new items - Does not require user data
+  - Disadvantages: No recommandations for new users - Finding righ features is difficult
 
 ### Similarity
 
 **Jaccard Similarity:** $J(A,B)= \frac{|A \cap B|}{|A \cup B|}$ (No rating)  
 **Cosine similarity:** $\cos(d_j, q)= \frac{<d_j, q>}{||d_j|| \times ||q||} = \frac{ \underset{ n \in N }{ \sum } d_{ji} * q_i }{ \sqrt{ \underset{ n \in N }{ \sum } d_{ji}^2 } \sqrt{ \underset{ n \in N }{ \sum } q_i^2 } }$ (missing ratings are negative)  
 **Pearson correlation coefficient:**  
-$sim(x,y) = \frac{ \underset{ s \in S_{ xy } }{ \sum } (r_{ xs } - \bar{ r_x } )( r_{ ys } - \bar{ r_y } ) }{ \sqrt{ \underset{ s\in S_{ xy } }{ \sum } ( r_{ xs } - \bar{ r_x } )^2 } \sqrt{ \underset{ s \in S_{ xy } }{ \sum }( r_{ ys } - \bar{ r_y })^2 } } = cos( (r_{xs}-\bar{r_x}), (r_{ys}-\bar{r_y}))$  
-(Consider only ratings if user x and y rated the item)
+$sim(x,y) = \frac{ \underset{ i \in I_x \cap I_y }{ \sum } (r_{ xi } - \bar{ r_x } )( r_{ yi } - \bar{ r_y } ) }{ \sqrt{ \underset{ i \in I_x \cap I_y }{ \sum } ( r_{ xi } - \bar{ r_x } )^2 } \sqrt{ \underset{ i \in I_x \cap I_y }{ \sum }( r_{ yi } - \bar{ r_y })^2 } } $  
+(Consider only ratings if user x and y rated the item; $\bar{r_x}$ is the average rating of items by user x)
 
 ### Collaborative Filtering
 
@@ -366,11 +373,14 @@ User-based:
 **Prediction** based on pearson correlation and the average ratings of each user:  
 $pred(x,i) = avg(r_x) + \frac{ \underset{n \in N}{\sum} sim(x,n) *(rn_i - avg(r_n))}{\underset{n \in N}{\sum} sim(x,n)}$
 
-The prediction can be used to rank the items for the user (might lead to too many niche items, which can be prevented by considering the popularity)
+The prediction can be used to rank the items for the user (might lead to too many niche items, which can be prevented by considering the popularity)d
 
 Items-based:
 
 Rate the similarity between items. This can be done with cosine similarity. This often works better, as items are simpler than user. On the other hand there is the problem of what to recommend to a new user as they did not ranked anything or just a few items and what is about new, not yet rated items?
+
+Advantages: Works for all types of content - no background info needed
+Disadvantages: Not rated item can't be recommended - Needs several ratings by the same user - Recommandations are not really unique for a user
 
 Latent Factor model:
 
@@ -379,6 +389,16 @@ Matrix of hidden factors for each item Q and matrix of how important each factor
 Rating of a item i of user x: $r_{xi} = q_i * p_x$ ($q_i$: row i in Q; $p_x$: column x of $P^T$)
 
 ## Sequential Data
+
+Preprocessing: The data from a data source (e.g. Cookies, Web Server Logs, Web APIs,...) needs to be preprocessed to work with it. Therefor remove unusable data and find interesting identifier (e.g. IP of user).
+
+### Markov chains
+
+Sequences are transitions between states.  
+First order Markov chains: Memoryless - next state only depends on current one
+
+Transition martix = $\begin{bmatrix} p_{1,1} & ... & p_{1,j} \\ ... & ._. & ... \\ p_{i,1} & ... & p_{i,j} \end{bmatrix}$ with single transition probabilitys $p_{i,j}$ and $\underset{j}{\sum}p_{i,j} = 1$  
+Likelihood:
 
 ## Misbehaviour on the Web
 

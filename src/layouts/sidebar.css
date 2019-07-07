@@ -9,7 +9,7 @@
   grid-column-start: 1;
   grid-column-end: 2;
   padding: 20px 20px 0px 0px;
-  transition: 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
 }
 
 .sidebar-open {
@@ -131,7 +131,7 @@
 
 @media only screen and (max-width: 400px) {
   .sidebar {
-    width: 90vw;
+    width: 80vw;
   }
 
   .sidebar-open {
@@ -139,6 +139,6 @@
   }
 
   .sidebar-closed {
-    transform: translateX(-85vw);
+    transform: translateX(-75vw);
   }
 }
