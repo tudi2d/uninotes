@@ -392,13 +392,43 @@ Rating of a item i of user x: $r_{xi} = q_i * p_x$ ($q_i$: row i in Q; $p_x$: co
 
 Preprocessing: The data from a data source (e.g. Cookies, Web Server Logs, Web APIs,...) needs to be preprocessed to work with it. Therefor remove unusable data and find interesting identifier (e.g. IP of user).
 
+- Sequence Clustering
+  - Based on sequence similarity - extract features first
+- ## Sequence Classification
+- Sequence Prediction
+- Sequence Labeling
+- Sequence Segmentation
+
 ### Markov chains
 
 Sequences are transitions between states.  
 First order Markov chains: Memoryless - next state only depends on current one
 
-Transition martix = $\begin{bmatrix} p_{1,1} & ... & p_{1,j} \\ ... & ._. & ... \\ p_{i,1} & ... & p_{i,j} \end{bmatrix}$ with single transition probabilitys $p_{i,j}$ and $\underset{j}{\sum}p_{i,j} = 1$  
-Likelihood:
+State space: $S=\{s_1,s_2,...,s_m\}$  
+Markov property: $P(X_{t+1} = s_j | X_t = s_{i_t}) = p_{i,j}$  
+Transition martix = $M = \begin{bmatrix} p_{1,1} & ... & p_{1,j} \\ ... & ._. & ... \\ p_{i,1} & ... & p_{i,j} \end{bmatrix}$ with single transition probabilitys $p_{i,j}$ and $\underset{j}{\sum}p_{i,j} = 1$ and $p_{i,j} = \frac{n_{i,j}}{\underset{j}{\sum} n_{i,j}}$  
+Likelihood: $P(D|\Theta) = p(x_1) \underset{i}{\prod}\underset{j}{\prod}p_{i,j}^{n_{i,j}}$ with $n_{i,j}$ the number of transitions from i to j  
+Maximum Likelihood: $L(P(D|\Theta))= log(P(D|\Theta)) = log(p(x_1)) + \underset{i}{\sum}\underset{j}{\sum}n_{i,j} log(p_{i,j})$  
+Prediction: $(0 1) M^k = (a b)$ a and b are the predicted propabilities after k iterations, if we started from the 2nd state. This is an example if there are 2 different states.
+
+Reset states mark the start and end of a sequence and are necessary when having multiple sequences. This means that there has to be a row and column for reset states if there are multiple sequences.
+
+k-th order Markov chain: $x_i$ dependds on k previous states
+
+Bayesian Statistics: $P(A|B)=\frac{P(B|A)P(A)}{P(B)}$
+
+### Sequential Pattern Mining
+
+> "Given a set of data sequences, the problem is to discover sub-sequences that are frequent, i.e., the percentage of data sequences containing them exceeds a user-specified minimum support" [Garofalakis, 1999]
+
+### PrefixSpan
+
+[Complete example](https://webdocs.cs.ualberta.ca/~zaiane/courses/cmput695-04/slides/PrefixSpan-Wojciech.pdf) which explains it clearly.
+
+Advantages: No explicit candidatae generation (in oposite to apriori) - Projected databases keep shrinking  
+Disadvantages: Construction of projected database can be cost intensive
+
+Sparse data tends to favor the PrefixSpan Algorithm.
 
 ## Misbehaviour on the Web
 
@@ -426,3 +456,9 @@ Only usefull for large data sets.
 Greedy algorithm  
 $\epsilon$-Greedy algorithm: is sensitive to bad tuning. Performs as good as the UCB algorithm  
 UCB algorithm
+
+---
+
+## Overview
+
+### Important Formulars
