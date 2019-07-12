@@ -129,7 +129,7 @@ Brutus AND Caesar AND NOT Calpurnia
 
 - Most widely used IR model
 
-**Document-Term Matrix:** $n \times m$ matrix with the frequency of the n Terms in each of the m documents
+**Document-Term Matrix:** $n \times m$ matrix with the frequency of the n Terms in each of the m documents  
 **Term Frequency (TF):** $tf_{ij}= \frac{f_{ij}}{max\{f_{1j},...,f_{|V|j}\}}$  
 $f_{ij}$ is the number how often Term i appears in Document j  
 **Inverse document frequency (IDF):** $idf_i = \log \frac{N}{df_i}$  
@@ -432,13 +432,105 @@ Sparse data tends to favor the PrefixSpan Algorithm.
 
 ## Misbehaviour on the Web
 
+Types of Misbehavior:
+
+- Malicious users: Trolling, Vandals
+- Misinformation: Hoaxes, Fake reviews
+
+Goal is to analyze this misbehaviour.
+
+### Trolling
+
+Trolls disrupt online discussion. They make regular users feel uneasy or make them leave a discussion. The troll is correlated to a psychopathic, narcissistic and sadistic personality. From the behavior he acts less positive, less on topic, post more per thread, uses more profane language and with all this receives more replies/attention. A negative mood and a negative context effects trolling by increasing the trolling behavior. Trolls who receive negative feedback are likely to troll more.
+
+What to do against trolls
+
+- Discourage negative feedback (no dislike button)
+- Delete troll/ negative comments
+- Disallow too quick posts
+- Shadow banning: Comments of trolls are not visible to anyone else
+- Hellbanning: Comments of trolls are only shown to other trolls
+
+### Sockpuppet
+
+> A fake account run either part of a network of sock puppet accounts or just by itself run by one person ([UrbanDictionary](www.urbandictionary.com))
+
+Used for diversify, anonymize, multiply identity or privacy.
+
+Detect sockpuppets:
+
+- Similar usage than other users
+- Login time, login IP address, username, point of view, supports particular user
+- Used more often in controversial topics
+- Start fewer discussions
+- More opinionated, upvote each other more, are downvoted more
+
+### Vandals
+
+> Vandalism is“an action involving deliberate destruction ofor damage to public or private property.”
+
+More likely to quickly edit (e.g wikipedia) pages and having a decreasing amount of edits over time. They can be detected by there meta data (registered, account-age, edit quantity, block history, ...) or content driven by trusting all content that survived multiple edits more.
+
+### Misinformation
+
+We differ between misinformation by intent (Disinformation) and by knowledge (Fake reviews, hoaxes).
+
+Detect misinformation
+
+- Manual inspection
+- User ratings/ Feedback
+- Duplicates
+- Unexpected rule (Always negative, except for one really positive review)
+- Cluster users into categories
+
+Open Problems in detection: Early detection of misbehavior, coordinated attacks, anonymity vs single verified identity
+
 ## Representation learning
 
+...
+
 ## Handling Large Datasets
+
+### Distributed data analysis
+
+Cluster Computing is used for huge clusters like the google cloud. Problems are the network bottleneck (due to bandwith) and complex distributed computing.
+
+#### Map-Reduce
+
+Store data redundantly (persistence and availability) and move computation close to data.
+Distributed File System: Chunk servers (Split files into contiguous chunks with replicates), Master node (knows where which file is stored), Client library for file access
+
+Document will be split into key-value pairs which are than grouped by key and will be reduced, if they have appear several times.
+
+### Shingles
+
+k-shingle: k characters that appear in the document
+
+Common shingles $\rightarrow$ simmilar text.
+
+### Hash function
+
+The probability that the minhash function for a random permutation ofrows produces the same value for two sets equals the Jaccard similarityof those sets
+
+[In Detail](https://www.youtube.com/watch?v=96WOGPUgMfw)
+
+#### Local sensitive hashing
+
+[Read this](http://infolab.stanford.edu/~ullman/mmds/ch3a.pdf)
 
 ### Data streams
 
 ## Ads
+
+### Bipartite matching
+
+Perfect matching: Every node appears in the matching
+
+### Adwords problem
+
+We need a online algorithm (e.g. Greedy algorithm with competitive ratio $\frac{1}{2}$)
+
+Balance Algorithm:
 
 ### A/B Test
 
