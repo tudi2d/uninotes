@@ -2,7 +2,8 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import "./sidebar.css";
 import { Scrollbars } from "react-custom-scrollbars";
-import SidebarItem from "./SidebarItem";
+import SidebarItem from "./Item";
+import ArrowIcon from "../ArrowIcon";
 
 let articles = [];
 let subjects = [];
@@ -14,6 +15,7 @@ const addSubjects = function(edges) {
     let { frontmatter, fields, headings } = node;
     const route = fields.slug;
     const topics = fields.slug.split("/").filter(el => el !== "");
+    // Format link to anker
     headings = headings.map(heading => {
       return {
         ...heading,
@@ -41,7 +43,8 @@ const addSubjects = function(edges) {
         }
       });
       if (!subjectExists) {
-        if (topics[0]) {
+        // route has no overtopic is added to artivles
+        if (topics[0] && topics[1]) {
           subjects.push({ title: topics[0], pages: [page] });
         } else {
           articles.push(page);
@@ -69,19 +72,9 @@ const Sidebar = props => {
           className="sidebar-icon-wrapper"
           onClick={() => toggleSidebar(isShown => !isShown)}
         >
-          <svg
-            className={shown ? "sidebar-icon-open" : "sidebar-icon-closed"}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <g>
-              <path fill="none" d="M0 0h24v24H0z" />
-              <path
-                fill="#fff"
-                d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"
-              />
-            </g>
-          </svg>
+          <div className={shown ? "sidebar-icon-open" : "sidebar-icon-closed"}>
+            <ArrowIcon color="#fff" />
+          </div>
         </div>
       </div>
       <nav>
@@ -93,15 +86,7 @@ const Sidebar = props => {
                   {title}
                 </Link>
               </li>
-              <ul className="sidebar-anker">
-                {headings.map(({ value, depth, route }) => (
-                  <Link to={route} className="link" key={route}>
-                    <li className="sidebar-post-headings" key={title + value}>
-                      {value}
-                    </li>
-                  </Link>
-                ))}
-              </ul>
+              <SidebarItem headings={headings} />
             </ul>
           ))}
           {subjects.map(({ title, pages }, i) => (
@@ -111,20 +96,15 @@ const Sidebar = props => {
               </li>
               {pages.map(({ title, route, headings }) => (
                 <ul className="sidebar-topic-article" key={title + route}>
-                  <svg
+                  <div
                     className={`sidebar-topic-post-icon ${
                       route === props.location.pathname && isOpen
                         ? "active"
                         : ""
                     }`}
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
                   >
-                    <g>
-                      <path fill="none" d="M0 0h24v24H0z" />
-                      <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" />
-                    </g>
-                  </svg>
+                    <ArrowIcon />
+                  </div>
                   <li
                     className="sidebar-topic-post-list"
                     onClick={() =>
@@ -140,6 +120,7 @@ const Sidebar = props => {
                   <SidebarItem
                     headings={headings}
                     isShown={route === props.location.pathname && isOpen}
+                    onClick={() => toggleSidebar(isShown => !isShown)}
                   />
                 </ul>
               ))}

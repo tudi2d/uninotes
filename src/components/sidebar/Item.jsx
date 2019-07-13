@@ -1,8 +1,8 @@
 import { Link } from "gatsby";
 import React, { useRef, useEffect } from "react";
-import "./sidebarItem.css";
+import "./sidebar-item.css";
 
-const SidebarItem = ({ headings, isShown }) => {
+const SidebarItem = ({ onClick, headings, isShown = true }) => {
   const itemList = useRef(null);
   useEffect(() => {
     itemList.current.style.marginTop = isShown
@@ -18,7 +18,12 @@ const SidebarItem = ({ headings, isShown }) => {
     <div className="sidebar-item">
       <ul ref={itemList} className="sidebar-item-list">
         {headings.map(({ value, depth, route }) => (
-          <Link to={route} className="link" key={route}>
+          <Link
+            to={route}
+            className="link"
+            key={route}
+            onClick={onClick ? onClick : null}
+          >
             <li
               className={`sidebar-item-list-headings depth-${depth}`}
               key={route + depth}
