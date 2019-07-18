@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import Helmet from "react-helmet";
 import "./layout.css";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/sidebar/Sidebar";
 
 const Layout = props => (
   <StaticQuery

@@ -441,22 +441,22 @@ blockquote {
   font-style: italic;
 }
 
-@media only screen and (max-width: 480px) {
-  html {
-    font-size: 100%;
-  }
+a {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+a:hover {
+  text-decoration: underline;
+  opacity: 1;
 }
 
 .layout {
   display: flex;
 }
 
-.link {
-  text-decoration: none;
-  opacity: 0.8;
-}
-
-.link:hover {
-  text-decoration: underline;
-  opacity: 1;
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 100%;
+  }
 }
