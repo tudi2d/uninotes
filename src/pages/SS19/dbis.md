@@ -51,6 +51,11 @@ Relationship: <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3
 
 Rekursive Beziehung: <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="271px" viewBox="-0.5 -0.5 271 62" content="&lt;mxfile modified=&quot;2019-07-18T08:10:25.350Z&quot; host=&quot;www.draw.io&quot; agent=&quot;Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0&quot; etag=&quot;zktW1MWxBJae8_N1PHrz&quot; version=&quot;10.9.8&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;LRwWvk0p5C2VLGGLqu9J&quot; name=&quot;Page-1&quot;&gt;5ZbLjtsgFIafxstWsUnsZJnxZNpKzcyoUa87ZJ/YSBhcjGMnT18I+J65tE1X3UScHzjAd35DHBRm9TuB83TLY6CON4trB906nucHgfrVwtEIKEBGSASJjeR2wo6cwIozq5YkhmIwUHJOJcmHYsQZg0gONCwEr4bD9pwOV81xAhNhF2E6Vb+SWKZGXXpBp78HkqTNyq6/Mj0ZbgbbkxQpjnnVk9DGQaHgXJpWVodANbuGi5l390RvuzEBTL5mwgO5/+mvtncfPrLTA8fh5/DH9s3cZDlgWtoDf+GCQlGyxO5aHhsUgpcsBp1t5qCbKiUSdjmOdG+laq+0VGZURa5qtqfVY/eE0pBTLs6JULBZ+xut28VBSKifPJXbslIeA56BFEc1pJmALN5jUwAbV121Wi3tVcq3GrYGSdrUHUPVsBh/A6k/QXrgQuCyKECegE2w9qBdYoqL3Ph6T2oNX5PNdT8p+CfVg1miMz0LXPG+8f3rAEezVwCfXQLu/iPgy0seTpwQOes5S0BMiAOL1/pqUBHjDIbGhZrIbxrjW3e5svH3c4xQ039bW87n4NgLHkEQdSoQVjNrQzy5ZEa41f54KSJ4yVfTsvSwLy5QbzQBFEtyGG7jUinsCo+cqA12VR9/ZvPR52O2b2f1b6FRIm8+SoRGiSQWCchJorMz2mP/uVlWE7Pc4yhVz8LfGCVYDoyiH73/1ijeqL6LxZWMsriWUVTYvbpmePfXBW1+AQ==&lt;/diagram&gt;&lt;/mxfile&gt;" onclick="(function(svg){var src=window.event.target||window.event.srcElement;while (src!=null&amp;&amp;src.nodeName.toLowerCase()!='a'){src=src.parentNode;}if(src==null){if(svg.wnd!=null&amp;&amp;!svg.wnd.closed){svg.wnd.focus();}else{var r=function(evt){if(evt.data=='ready'&amp;&amp;evt.source==svg.wnd){svg.wnd.postMessage(decodeURIComponent(svg.getAttribute('content')),'*');window.removeEventListener('message',r);}};window.addEventListener('message',r);svg.wnd=window.open('https://www.draw.io/?client=1&amp;lightbox=1&amp;edit=_blank');}}})(this);" style="cursor:pointer;max-width:100%;max-height:62px;"><defs/><g><rect x="0" y="0" width="110" height="60" fill="#7ea6e0" stroke="#000000" pointer-events="none"/><g transform="translate(26.5,23.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="55" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 56px; white-space: nowrap; overflow-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">Vorlesung</div></div></foreignObject><text x="28" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">Vorlesung</text></switch></g><path d="M 170 30.5 L 220 1.63 L 270 30.5 L 220 59.37 L 170 30.5 Z" fill="#ea6b66" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(180.5,23.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="77" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 78px; white-space: nowrap; overflow-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">vorraussetzen</div></div></foreignObject><text x="39" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">vorraussetzen</text></switch></g><path d="M 188.71 20.33 L 110 20" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(123.5,14.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="51" height="11" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 11px; font-family: &quot;Helvetica&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;">Vorgänger</div></div></foreignObject><text x="26" y="11" fill="#000000" text-anchor="middle" font-size="11px" font-family="Helvetica">Vorgänger</text></switch></g><path d="M 187.76 41.29 L 110 40" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(121.5,34.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="53" height="11" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 11px; font-family: &quot;Helvetica&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;">Nachfolger</div></div></foreignObject><text x="27" y="11" fill="#000000" text-anchor="middle" font-size="11px" font-family="Helvetica">Nachfolger</text></switch></g></g></svg>
 
+isA Beziehung: partiell:
+
+- Die erbenden Entities decken nur ein Teil der ursprünglichen Entity ab
+- Die erbenden Entities spezialisieren alle ursprünglichen Entities
+
 ### Konzeptueller Entwurf
 
 ## Relationale Datenmodell
@@ -66,31 +71,81 @@ Im geordneten Relationenschema spielt ist $(1,a) \neq (a,1)$. Im ungeordneten Re
 - Entity-Typ $\rightarrow$ Tabelle/Relation: Student($\underline{\text{MatrNr}}$, Name, Status) - Zusammengesetzte Attribute werden zu einzelnen Attributen
 - n:m Beziehungen $\rightarrow$ Relationen für Relation und Entities:
 
-  - Entities: Entity1($\underline{\text{Key1}}$); Entity2($\underline{\text{Key2}}$); Relationship($\underline{\text{Key1}}, \underline{\text{Key2}}$)
+  - Relationen: Entity1($\underline{\text{Key1}}$); Entity2($\underline{\text{Key2}}$); Relationship($\underline{\text{Key1}}, \underline{\text{Key2}}$)
   - Interrelationale Abhängigkeiten: Relationship[Key1] $\subseteq$ Entity1[Key1]; Relationship[Key2] $\subseteq$ Entity2[Key2]
   - Die "Relationship" bekommt Key1 und Key2 als Fremdschlüssel
 
 - 1:n Beziehungen
-  - Entities: Entity1($\underline{\text{Key1}}$, Attr1); Entity2($\underline{\text{Key2}}$, Entity1Key1Relation)
+  - Relationen: Entity1($\underline{\text{Key1}}$, Attr1); Entity2($\underline{\text{Key2}}$, Entity1Key1Relation)
   - Interrelationale Abhängigkeiten: Entity2[Entity1Key1Relation] $\subseteq$ Entity1[Key1]
   - Vorteil: Keine extra Relation für Relation
   - Nachteil: Für Entities die nicht in Beziehung stehen ist Entity1Key1Relation leer
 - 1:1 Beziehungen
   - Verschmelzen von 2 Entities zu einer Relation
-  - Entity1($\underline{\text{Key1}}$, Attr1, Key2 Attr2)
+  - Relationen: Entity1($\underline{\text{Key1}}$, Attr1, Key2 Attr2)
 - Rekursive Beziehungen
-  - Entities: Relation($\underline{\text{Vorgänger}}$, $\underline{\text{Nachfolger}}$)
+  - Relationen: Relation($\underline{\text{Vorgänger}}$, $\underline{\text{Nachfolger}}$)
   - Interrelationale Abhängigkeiten: Relation[Vorgänger] $\subseteq$ Entity[Key]; Relation[Nachfolger] $\subseteq$ Entity[Key]
 - isA Beziehungen
-  - Key der Parten-Entity auch für Children-Entity
-  - Schnittmenge zwischen Children-ENtities ist die leere Menge
-- Schwache Entity-Typen
+  - Relationen: Key der Parent-Entity auch für Children-Entity
+  - Interrelationale Abhängigkeiten: Children[Key] $\subseteq$ Parent[Key] und Schnittmenge zwischen Children-Relationen ist die leere Menge
+- Mehrwertiges Attribut:
+  - Aus dem mehwertigen Attribut wird eine Relation
+  - Relationen: Entity($\underline{\text{Key}}$, Attr); Mehrwertig($\underline{\text{MehrwertigKey}}$, $\underline{\text{Key}}$)
+  - Interrelationale Abhängigkeiten: Mehrwertig[Key] $\subseteq$ Student[Matrkielnummer]
 
 ### Relationale Algebra
 
+Relationen als Wertebereich. Somit sind R,S Mengen von Tupeln
+
+#### Grundoperationen
+
+- Vereinigung: $R \cup S$
+  - Vereinigt und löscht Duplikate
+- Differenz: $R - S$
+  - Alle Tupel aus R, welche nicht in S sind
+- Kartesisches Produkt: $R \times S$
+  - Jedes Tupel aus R verknüpft mit jedem Tupel aus S
+- Selektion: $\sigma_F(R)$
+  - Selektiert alle Tupel, welche dem boolschen Ausdruck F entsprechen
+- Projektion: $\pi_{A_{i_1},...,A_{i_m}}(R)$
+  - Gibt nur die Attribute (Spalten) $A_{i_1},...,A_{i_m}$ zurück
+- Umbenennung: $\rho_{R'}(R)$ oder $\rho_{A' \leftarrow A}(R)$
+  - Bennent Relation R in R' um
+  - Bennent Attribut A in A' um für eine Relation R
+
+Alle Grundoperationen sind induktiv definiert, sodass eine Relation auch durch eine gültige Operation auf einer Relation ersetzt werden kann.
+
+#### Weitere Operationen
+
+- Durchschnitt: $R \cap S = R - (R - S)$
+- Natürlicher Verbund (natural join): $R \Join S$
+  - Zusammenfügen von Relationen in Abhängigkeit von übereinstimmenden Attributen
+  - Funktioniert nur bei gleichen Attributnamen
+  - kommutativ und assoziativ
+- Theta-Join: $R \Join_{\Theta} S = \sigma_{\Theta}(R \times S)$
+  - Nur passende Attribute des Kreuzprodukts
+  - Doppelte Attribute werden nicht aussortiert!
+- Weitere join operationen
+  ![Join Operationen](../../../public/images/join.png)
+
 ### Relationale Kalkül
 
+Deklarative Sprache (im Gegensatz zur prozeduralen Sprache der relationalen Algebra)
+
+#### Tupelkalkül
+
+Alle Tupel t die die Formel $F(t)$ erfüllen $\{ t | F(t) \}$  
+z.B. $\{ [p.PersNr] | p \in Professor \land p.Rang = \text{'W3'} \}$
+
+#### Domänenkalkül
+
+Ein Ausdruck mit k Bereichsvariablen: $\{ x_1,...,x_k | F(x_1,...,x_k) \}$  
+z.B. $\{ p | \exists n,b (\text{Professor}(p,n,\text{'W3'},b)) \}$
+
 ## SQL
+
+Structured Query Language ist eine Mischung aus relationaler Algebra und des relationalen Kalküls
 
 ## Relationale Anfragebearbeitung
 
