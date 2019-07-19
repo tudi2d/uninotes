@@ -5,9 +5,9 @@ title: "Datenbanken & Informationssysteme"
 Klassischer Klausuraufbau:
 
 - ER-Diagramm zeichnen
-- Relationales Datenbankschema
+- Relationales Datenbankschema aus ER-Diagramm
 - Relationale Algebra, Kalküle
-- SQL
+- SQL Queries formulieren zu gegebenen Table
 - Funktionale Abhängigkeiten, Normalform
 - Synthese, Dekomposition
 - Serialisierbarkeit, Nebenläufigkeit, Transaktionsmanagment
@@ -145,11 +145,184 @@ z.B. $\{ p | \exists n,b (\text{Professor}(p,n,\text{'W3'},b)) \}$
 
 ## SQL
 
-Structured Query Language ist eine Mischung aus relationaler Algebra und des relationalen Kalküls
+Structured Query Language ist eine Mischung aus relationaler Algebra und des relationalen Kalküls. SQL ist eine deklarative Datenbankanfragensprache.
+
+```sql
+CREATE TABLE Cars (
+    SerialNumber INTEGER NOT NULL,
+    CarName VARCHAR (50),
+    OwnerId VARCHAR (50) REFERENCES Owner(OwnerId)
+    PRIMARY KEY (SerialNumber)
+);
+
+ALTER TABLE Cars
+ADD LicencePlate VARCHAR (50);
+
+ALTER TABLE CARs
+DROP COLUMN CarName;
+
+CREATE UNIQUE INDEX CarIndex
+ON Cars (SerialNumber);
+
+DROP INDEX CarIndex;
+
+// DROP TABLE;
+```
+
+### Views
+
+```sql
+CREATE VIEW OwnedCars AS
+SELECT * FROM Cars WHERE OwnerId IS NOT NULL;
+```
+
+### Data Manipulation Language
+
+Data Manipulation Language (DML) von SQL
+
+```sql
+SELECT *                    // Projektion
+FROM Cars                   // Kreuzprodukt
+WHERE CarName LIKE '%BMW%'  // Selektion
+```
+
+`SELECT DISTINCT` gibt nur einmalig eine Zeile zurück. Duplikate werden ignoriert.
+
+### Aggregatfunktionen
+
+```sql
+SELECT [COUNT, MIN, MAX, SUM, AVG] ([Distinct] <Attribut>)
+FROM ... WHERE ...
+```
+
+COUNT: Anzahl der Zeilen zu gegebener Querry  
+SUM : Summe der Werte eines Attributs
+
+### Gruppieren und Sortieren
+
+```sql
+SELECT * FROM ...
+GROUP BY <Liste von Attributen>
+ORDER BY <Liste von Attributen> ASC/DESC
+```
+
+### Join
+
+```sql
+// Theat-Join
+SELECT * FROM Cars ...
+JOIN ... ON <Bedingung für Attribute>
+```
+
+Es exestieren noch `LEFT (OUTER) JOIN, RIGHT (OUTER) JOIN, FULL (OUTER) JOIN`, welche analog zu `JOIN` verwendet werden können. Die funktionsweise lässt sich an der Grafik gut veranschaulichen.
+
+### Änderungen
+
+```sql
+INSERT INTO Cars (CarName, OwnerId)
+VALUES ('BMW',1)
+
+DELETE FROM Cars WHERE ...
+
+UPDATE Cars
+SET Price = Price + 200
+WHERE CarName = %'BMW'%
+```
 
 ## Relationale Anfragebearbeitung
 
+Günstigsten Auswertungsplan ermitteln.
+
+SQL zu relationaler Algebra (kanonisch)
+
+- Bilde das kartesische Produkt der Relationen
+- Führe Selektionen mit den einzelnen Bedingungen durch
+- Projeziere auf erforderliche Attribute
+
+Beispiel:
+
+```sql
+SELECT VName, NName
+FROM Studenten AS S, Professoren AS P
+WHERE S.NName = P.NName
+AND S.Alter < P.Alter - 20
+```
+
+Wird zu:
+
+$\pi_{VName, NName}(\sigma_{S.Alter < P.Alter - 20}(\sigma_{S.NName = P.NName}(S \times P)))$
+
+### regelbasierte Anfragenoptimierung
+
+Restrukturierungsalgorithmus
+
+- Aufbrechen der Selektion
+- Verschieben der Selektion nach unten
+- Kreuzprodukte und Selektionen zu Joins zusammenfassen
+- Einfügen und verschieben von Projektionen
+- (Zusammenfassen von Selektionen)
+
+Die Idee ist Selektionen möglichst früh durchzuführen und somit eine Performance-Verbesserung zu erreichen.
+
+<!--
+### kostenbasierte Anfragenoptimierung
+
+Joa... Kommt bestimmt nicht dran, ne
+
+### Basisoperationen
+-->
+
+### Indexstrukturen
+
+Prozesse sollen nebenläufig auf Daten arbeiten können. Für sowas verwendet man Festplatten als Sekundärspeicher. Die Daten werden in Blöcken gespeichert.
+
+#### eindimensionale Daten
+
+Mehrwege-Bäume: Alle Knoten haben $M + 1$ viele Nachfolger ud M viele Schlüssel.
+
+B-Baum: M+1 Mehrwege Suchbaum für eine gerade Zahl M.
+
+- Suchen: Binär vergleichen auf dem jeweiligen Knoten; Suche rekursiv in den Teilbaum. Benötigte Vergleiche: $log_2 M * log_m N$
+- Einfügen
+  - Passendes Blatt für Objekt suchen
+  - Wenn hierdurch das Blatt überläuft, spalte es auf
+- Löschen
+  - Bei einem Blatt: Lösche Schlüssel aus dem Blatt
+  - Bei inneren Knoten: Suche größten Schlüssel links vom zu löschenden Schlüssel. Ersetze den zulöschenden durch den gefundenen Knoten. Lösche den zu löschenden Knoten
+  - Bei der Wurzel: So wie bei den anderen beiden, nur darf die Wurzel weniger als M/2 Schlüssel haben
+
+Einfügen:  
+![Einfügen](https://martin-thoma.com/images/2012/07/b-tree-2-small-2.png)![Einfügen](https://martin-thoma.com/images/2012/07/b-tree-2-small-4.png)
+
+$B^+$-Baum: B-Baum Variante mit zwei Knotentypen
+
+- Blätter enthalten Schlüssel mit Datensätzen oder Verweisen auf Datensätzen
+
+$B^+$-Baum speichert Schlüssel ohne Daten. Dadurch ist der $B^+$-Baum meist breiter und weniger hoch als ein B-Baum.
+
+#### mehrdimensionale Daten
+
+Invertierte Listen
+
+Quadtree
+
+R-Baum (Rectangel-Baum)
+
 ## Relationale Entwurfstheorie
+
+### Funktionale Abhängigkeiten
+
+Sei $X$ eine Attributmenge und $R$ ein Relationenschema. $\alpha, \beta \subseteq X$.
+
+$\beta$ funktional abhängig von $\alpha$: $\alpha \rightarrow \beta$  
+intrarelationale Abhängigkeit: $\sigma_K:Rel(X)\rightarrow\{0,1\}$: 1, falls $\alpha \rightarrow \beta$ in R gilt, sonst 0  
+voll funktional abhängig: Es gilt $\alpha \rightarrow \beta$, aber $\alpha - \{ A \} \nrightarrow \beta$ für alle $A \in \alpha$.  
+Schlüsselkandidat: Attributmenge $\alpha \subseteq X$ ist ein Schlüsselkandidat, wenn $X$ voll funktional abhängig von $\alpha$ ist  
+Primärschlüssel: Einer der Schlüsselkandidaten
+
+R erfüllt funktionale Abhängigkeiten $A \rightarrow B$, wenn für Tupel p,q gilt $p.A = q.A$ und $p.B = q.B$.
+
+### Armstrong Kalkül
 
 ## Alternative Datenmodelle
 

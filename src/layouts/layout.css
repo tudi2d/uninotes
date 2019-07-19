@@ -363,6 +363,7 @@ li > p {
 code {
   font-size: 0.85rem;
   line-height: 1.45rem;
+  margin-right: 5px;
 }
 kbd {
   font-size: 0.85rem;
