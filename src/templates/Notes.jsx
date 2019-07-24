@@ -2,8 +2,7 @@ import { graphql } from "gatsby";
 import React from "react";
 
 const notes = props => {
-  const notesMarkdown = props.data.markdownRemark;
-  const { title } = notesMarkdown.frontmatter;
+  const { html, frontmatter } = props.data.markdownRemark;
   return (
     <div
       style={{
@@ -15,8 +14,8 @@ const notes = props => {
         gridColumnEnd: 3,
       }}
     >
-      {title ? <h1>{title}</h1> : null}
-      <div dangerouslySetInnerHTML={{ __html: notesMarkdown.html }} />
+      {frontmatter && frontmatter.title ? <h1>{frontmatter.title}</h1> : null}
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
 };

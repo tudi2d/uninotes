@@ -320,9 +320,13 @@ voll funktional abhängig: Es gilt $\alpha \rightarrow \beta$, aber $\alpha - \{
 Schlüsselkandidat: Attributmenge $\alpha \subseteq X$ ist ein Schlüsselkandidat, wenn $X$ voll funktional abhängig von $\alpha$ ist  
 Primärschlüssel: Einer der Schlüsselkandidaten
 
-R erfüllt funktionale Abhängigkeiten $A \rightarrow B$, wenn für Tupel p,q gilt $p.A = q.A$ und $p.B = q.B$.
+R erfüllt funktionale Abhängigkeiten $A \rightarrow B$, wenn für Tupel p,q gilt $p.A = q.A$ und $p.B = q.B$
 
 ### Armstrong Kalkül
+
+#### implizierte funktionale Abhängigkeiten
+
+
 
 ## Alternative Datenmodelle
 
