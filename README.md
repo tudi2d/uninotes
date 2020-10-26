@@ -1,11 +1,49 @@
+<h1 align="center">
+university notes using GatsbyJS
+ </h1>
 
-# A Gatsby Starter for making notes on different subjects
------------------------------------
+## :books: general
 
-An example site can be found [here](https://gatsby-starter-notes.netlify.com/).
+This web app is intended to easily create and share notes for university classes. It is possible to write notes using Markdown language as well as including inline LaTeX, which is transpiled to HTML KaTeX.
 
-This Gatsby template is a simple, static site for displaying your notes written in markdown is a visually readable way. It also acts as a form of management over your notes. 
+## :computer: development.
 
-To add new subjects just create a directory called `subject_name` under the `pages` directory and then for each new topics within the subject you can create a folder with that name and an `index.md` with the notes for that topic. 
+To debug/run this repository in your local environment you can choose between using Yarn or Vercel CLI.
 
-To run in development: `gatsby develop`
+### yarn.
+
+Install and setup [Yarn](https://yarnpkg.com/getting-started/install), a package manager for JavaScript node modules.
+
+Setup
+
+```
+yarn install
+```
+
+Compiles and hot-reloads for development
+
+```
+yarn dev
+```
+
+Compiles and minifies for production
+
+```
+yarn build
+```
+
+### vercel cli.
+
+**Disclaimer**: This only make sense if you have a Vercel Account. Please inform yourself about the company and their terms of service before creating an account or using their software.
+
+Install and setup [Vercel CLI](https://vercel.com/download)
+
+Setup
+
+```
+now
+```
+
+## acknowledgement
+
+I originally build this in Spring 2019 using [this Gatsby starter](https://github.com/patricoferris/gatsby-starter-notes). There is a[ new, actively maintained version of this this Gatsby starter](https://github.com/gatsbyjs/gatsby-starter-notes-theme) available with more features.

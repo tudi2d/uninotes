@@ -1,9 +1,9 @@
 import { Link } from "gatsby";
 import React, { useState } from "react";
-import "./sidebar.css";
 import { Scrollbars } from "react-custom-scrollbars";
-import SidebarItem from "./SidebarItem";
+import SidebarItem from "./sidebar-item";
 import ArrowIcon from "../ArrowIcon";
+import "./style.css";
 
 let articles = [];
 let subjects = [];

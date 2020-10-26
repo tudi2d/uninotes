@@ -326,8 +326,6 @@ R erfüllt funktionale Abhängigkeiten $A \rightarrow B$, wenn für Tupel p,q gi
 
 #### implizierte funktionale Abhängigkeiten
 
-
-
 ## Alternative Datenmodelle
 
 ## Transaktionsverwaltung

@@ -80,7 +80,7 @@ L ist DFA-erkennbar $\Leftrightarrow$ L ist $\epsilon$-NFA-erkennbar $\Leftright
 Sei A ein $\epsilon$-NFA. Finde $L(\bar A)$:
 
 - Konstruiere zu äquivalenten NFA A'
-- Konstruiere zu A' äquivalenten DFA A'' ([Potenzmengenkonstruktion](/SS19/fosap/#potenzmengenkonstruktion))
+- Konstruiere zu A' äquivalenten DFA A'' ([Potenzmengenkonstruktion](/SuSo19/fosap/#potenzmengenkonstruktion))
 - Konstruiere DFA $A'''$ mit $L(A''')= L(\bar A'' ) = L(\bar A)$
 
 ## Rekursion und Induktion

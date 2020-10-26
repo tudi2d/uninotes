@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import React, { useRef, useEffect } from "react";
-import "./sidebar-item.css";
+import "./style.css";
 
 const SidebarItem = ({ onClick, headings, isShown = true }) => {
   const itemList = useRef(null);
