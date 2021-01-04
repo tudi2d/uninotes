@@ -2,7 +2,7 @@
 university notes using GatsbyJS
  </h1>
  
-![uninotes Demo](https://cloud.hgnrth.de/s/FaHYmqowtSLJaP9/download)
+![uninotes Demo](https://raw.githubusercontent.com/tudi2d/uninotes/master/demo.gif)
 
 ## :books: general
 
